@@ -23,7 +23,7 @@ app.get('/auth/google', (req, res) => {
     const redirectUri = 'https://accounts.google.com/o/oauth2/v2/auth?';
     const params = new URLSearchParams({
         client_id: env.GOOGLE_CLIENT_ID,
-        redirect_uri: 'http://localhost:3000/auth/google/callback',
+        redirect_uri: `${env.APP_URL}/auth/google/callback`,
         response_type: 'code',
         scope: 'profile email',
     });
@@ -38,7 +38,7 @@ app.get('/auth/google/callback', async (req, res) => {
             code,
             client_id: env.GOOGLE_CLIENT_ID,
             client_secret: env.GOOGLE_CLIENT_SECRET,
-            redirect_uri: 'http://localhost:3000/auth/google/callback',
+            redirect_uri: `${env.APP_URL}/auth/google/callback`,
             grant_type: 'authorization_code',
         }
     );
@@ -73,7 +73,7 @@ app.get('/auth/github/callback', async (req, res) => {
             code,
             client_id: env.GITHUB_CLIENT_ID,
             client_secret: env.GITHUB_CLIENT_SECRET,
-            redirect_uri: 'http://localhost:3000/auth/github/callback',
+            redirect_uri: `${env.APP_URL}/auth/github/callback`,
         },
         {
             headers: { Accept: 'application/json' },
