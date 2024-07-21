@@ -83,9 +83,8 @@ app.get('/auth/github/callback', async (req, res) => {
     const profileResponse = await axios.get('https://api.github.com/user', {
         headers: { Authorization: `Bearer ${access_token}` },
     });
-    console.log(profileResponse.data);
     res.cookie('userName', profileResponse.data.login);
-    res.cookie('userPic', profileResponse.data.avatar_url);
+    res.cookie('avatar', profileResponse.data.avatar_url);
     res.redirect('/');
 });
 
