@@ -59,7 +59,7 @@ app.get('/auth/github', (req, res) => {
     const redirectUri = 'https://github.com/login/oauth/authorize?';
     const params = new URLSearchParams({
         client_id: env.GITHUB_CLIENT_ID,
-        redirect_uri: 'http://localhost:3000/auth/github/callback',
+        redirect_uri: `${env.APP_URL}/auth/github/callback`,
         scope: 'user:email',
     });
     res.redirect(redirectUri + params.toString());
