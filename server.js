@@ -7,7 +7,6 @@ const { env } = process;
 config();
 
 app.use(express.static(path.resolve(__dirname, 'public')));
-app.use(cookieParser());
 
 app.get('/signin', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'public', 'signin.html'));
